@@ -33,3 +33,7 @@ struct powerups {
 	int type;
 };
 
+int _tmain(int argc, TCHAR * argv[]) {
+
+
+}
