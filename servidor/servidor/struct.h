@@ -32,7 +32,6 @@ struct Jogador {
 	int pontuacao;
 	int vidas;
 	powerUps pUps[5][1];
-	int pid;
 	int accao;
 };
 
@@ -52,11 +51,15 @@ struct enemies {
 
 /*
 Estrutura para enviar para o Jogador
+pos[2] -> tera a posicao em XY
+id -> id do inimigo, aliado, tiros, bombas, powerUps
+type -> indica se é inimigo, aliado, tiros, bombas ou powerUps
 */
 struct dataCli {
 	int pos[2];
 	int id;
 	int type;
+
 };
 
 /*
