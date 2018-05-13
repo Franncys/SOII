@@ -55,6 +55,7 @@ int _tmain(int argc, TCHAR * argv[]) {
 
 	//Tipo1
 	for (int i = 0; i < 3; i++) {
+		inimigos[nEnemies].id = nEnemies;
 		inimigos[nEnemies].hp = 2;
 		inimigos[nEnemies].pos[0] = 0;
 		inimigos[nEnemies].pos[1] = nEnemies;
@@ -86,8 +87,6 @@ int _tmain(int argc, TCHAR * argv[]) {
 		else
 			_tprintf(TEXT("Erro ao criar Thread\n"));
 	}
-
-
 
 	free(hT);
 	free(threadId);

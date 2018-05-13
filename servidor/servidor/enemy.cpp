@@ -11,6 +11,9 @@ DWORD WINAPI ThreadStartEnemy(LPVOID param)
 
 	printf("Tipo: %d\n", *type);
 	//Tratar Inimigos
+	
+
+	//WriteDados Função da DLL
 
 	return 0;
 }

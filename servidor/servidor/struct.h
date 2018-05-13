@@ -11,12 +11,12 @@ V tipo 5 = Vida extra(perm)
 A tipo 6 = Alcool, inverte sentido das teclas(temp)
 */
 struct powerUps {
+	int id;
 	int pos[2];
 	int type;
 	int apanhado;
 	int tempo;
 };
-
 
 /*
 pos -> Posição do Jogador no jogo
@@ -28,6 +28,7 @@ accao -> caso alguma coisa aconteca do lado do cliente é enviado um codigo na es
 */
 struct Jogador {
 	int pos[2];
+	int id;
 	int pontuacao;
 	int vidas;
 	powerUps pUps[5][1];
@@ -42,10 +43,20 @@ tipo-> Tipo da nave invasora
 hp-> número de pontos de resistências
 */
 struct enemies {
+	int id;
 	int pos[2];
 	int vivo;
 	int tipo;
 	int hp;
+};
+
+/*
+Estrutura para enviar para o Jogador
+*/
+struct dataCli {
+	int pos[2];
+	int id;
+	int type;
 };
 
 /*
