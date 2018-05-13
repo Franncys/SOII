@@ -1,29 +1,34 @@
 #include <windows.h>
 #include "dll.h"
 
+HANDLE writeStr, writeMsg;
+
 //Exportar a função para ser utilizada fora da DLL
 BOOL ReadBuffer(Jogador cli) {
-	WaitForSingleObject(mBuffer, INFINITE);
-	CopyMemory(cli, cliente, sizeof(Cliente));
-	ReleaseSemaphore(mBuffer);
+	writeMsg = OpenSemaphore(SYNCHRONIZE, TRUE, TEXT("Buffer"));
+	WaitForSingleObject(writeMsg, INFINITE);
+	CopyMemory(cli, data , sizeof(Jogador));
+	CloseHandle(writeMsg);
 }
-BOOL WriteBuffer(Jogador c) {
-
-	WaitForSingleObject(mBuffer, INFINITE);
-	CopyMemory(cliente, c, sizeof(Cliente));
-	ReleaseSemaphore(mBuffer);
+BOOL WriteBuffer(Jogador cli) {
+	writeMsg = OpenSemaphore(SYNCHRONIZE, TRUE, TEXT("Buffer"));
+	WaitForSingleObject(writeMsg, INFINITE);
+	CopyMemory(data, cli, sizeof(Jogador));
+	CloseHandle(writeMsg);
 	return true;
 }
 BOOL ReadDados(dataCli d) {			
-	WaitForSingleObject(mDados, INFINITE); 
-	CopyMemory(d, info, sizeof(Dados)); 
-	ReleaseSemaphore(mDados);
+	writeStr = OpenSemaphore(SYNCHRONIZE, TRUE, TEXT("Data"));
+	WaitForSingleObject(writeStr, INFINITE);
+	CopyMemory(d, pData, sizeof(dataCli));
+	CloseHandle(writeStr);
 	return true;
 }
 BOOL WriteDados(dataCli d) {
-	WaitForSingleObject(mDados, INFINITE);
-	CopyMemory(info, d, sizeof(Dados));
-	ReleaseSemaphore(mDados);
+	writeStr = OpenSemaphore(SYNCHRONIZE, TRUE, TEXT("Data"));
+	WaitForSingleObject(writeStr, INFINITE);
+	CopyMemory(pData, d, sizeof(dataCli));
+	CloseHandle(writeStr);
 	return true;
 }
 

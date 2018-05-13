@@ -49,18 +49,7 @@ struct enemies {
 	int hp;
 };
 
-/*
-Estrutura para enviar para o Jogador
-pos[2] -> tera a posicao em XY
-id -> id do inimigo, aliado, tiros, bombas, powerUps
-type -> indica se é inimigo, aliado, tiros, bombas ou powerUps
-*/
-struct dataCli {
-	int pos[2];
-	int id;
-	int type;
 
-};
 
 /*
 Tipos para as bombas e tiros em que são guardadas as posições dos mesmo
