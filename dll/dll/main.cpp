@@ -2,14 +2,29 @@
 #include "dll.h"
 
 //Exportar a função para ser utilizada fora da DLL
-int UmaString(void) {
-	TCHAR str[TAM];
-	_tprintf(TEXT("Dentro da Dll\nIntroduza uma frase:"));
-	_fgetts(str, TAM, stdin);
-	if (_tcslen(str) > 1) //Introduzir mais caracteres do que apenas <enter>
-		return 1;
-	else
-		return 0;
+BOOL ReadBuffer(Jogador cli) {
+	WaitForSingleObject(mBuffer, INFINITE);
+	CopyMemory(cli, cliente, sizeof(Cliente));
+	ReleaseSemaphore(mBuffer);
+}
+BOOL WriteBuffer(Jogador c) {
+
+	WaitForSingleObject(mBuffer, INFINITE);
+	CopyMemory(cliente, c, sizeof(Cliente));
+	ReleaseSemaphore(mBuffer);
+	return true;
+}
+BOOL ReadDados(dataCli d) {			
+	WaitForSingleObject(mDados, INFINITE); 
+	CopyMemory(d, info, sizeof(Dados)); 
+	ReleaseSemaphore(mDados);
+	return true;
+}
+BOOL WriteDados(dataCli d) {
+	WaitForSingleObject(mDados, INFINITE);
+	CopyMemory(info, d, sizeof(Dados));
+	ReleaseSemaphore(mDados);
+	return true;
 }
 
 BOOL WINAPI DllMain(HANDLE hInstance, DWORD razao, LPVOID tipo_declaracao) {
